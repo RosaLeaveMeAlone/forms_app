@@ -21,6 +21,10 @@ class HomeScreen extends StatelessWidget {
             leading: const Icon(Icons.access_alarm),
             onTap: () => context.push('/bloc'),
           ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Divider(),
+          ),
         ],
       ),
     );
