@@ -12,13 +12,13 @@ class HomeScreen extends StatelessWidget {
           ListTile(
             title: const Text('Cubits'),
             subtitle: const Text('Gestor de Estado simple'),
-            leading: const Icon(Icons.arrow_forward_ios_rounded),
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
             onTap: () => context.push('/cubits')
           ),
           ListTile(
             title: const Text('Bloc'),
             subtitle: const Text('Gestor de estado compuesto'),
-            leading: const Icon(Icons.access_alarm),
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
             onTap: () => context.push('/bloc'),
           ),
           const Padding(
@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
           ListTile(
             title: const Text('Nuevo Usuario'),
             subtitle: const Text('Manejo de formularios'),
-            leading: const Icon(Icons.access_alarm),
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
             onTap: () => context.push('/new-user'),
           ),
         ],
