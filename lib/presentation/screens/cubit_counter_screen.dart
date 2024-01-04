@@ -24,19 +24,21 @@ class _CubitCounterView extends StatelessWidget {
 
     final counterState = context.watch<CounterCubit>().state;
 
+    void _increaseCounterBy( BuildContext context, [ int value = 1 ] ) => context.read<CounterCubit>().increaseBy(value);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Cubit Counter: ${ counterState.transactionCount }'),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh_rounded),
-            onPressed: () {},
+            onPressed: () => context.read<CounterCubit>().reset(),
           ),
         ],
       ),
       body: Center(
         child: BlocBuilder<CounterCubit,CounterState>(
-          // buildWhen: (previous, current) => previous.counter != current.counter,
+          buildWhen: (previous, current) => previous.counter != current.counter,
           builder: (context, state) {
             
             return Text('Counter value: ${ state.counter }');
@@ -47,22 +49,24 @@ class _CubitCounterView extends StatelessWidget {
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          FloatingActionButton(
-            heroTag: '1',
-            child: const Text('+3'),
-            onPressed: () {},
+          BlocBuilder<CounterCubit,CounterState>(
+            builder: (context, state) => FloatingActionButton(
+              heroTag: '1',
+              child: const Text('+1'),
+              onPressed: () => _increaseCounterBy(context),
+            )
           ),
           const SizedBox(height: 10,),
           FloatingActionButton(
             heroTag: '2',
             child: const Text('+2'),
-            onPressed: () {},
+            onPressed: () => _increaseCounterBy(context,2),
           ),
           const SizedBox(height: 10,),
           FloatingActionButton(
             heroTag: '3',
-            child: const Text('+1'),
-            onPressed: () {},
+            child: const Text('+3'),
+            onPressed: () => _increaseCounterBy(context,3),
           ),
         ],
       ),
