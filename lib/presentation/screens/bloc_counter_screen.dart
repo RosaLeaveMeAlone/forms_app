@@ -9,7 +9,7 @@ class BlocCounterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cubit Counter'),
+        title: const Text('Bloc Counter'),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh_rounded),
