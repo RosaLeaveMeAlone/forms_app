@@ -12,6 +12,16 @@ class Password extends FormzInput<String, PasswordError> {
   // Call super.dirty to represent a modified form input.
   const Password.dirty(String value) : super.dirty(value);
 
+
+    String? get errorMessage {
+
+    switch (displayError) {
+      case PasswordError.empty: return 'La clave no puede estar vacío';
+      case PasswordError.length: return 'La clave debe tener al menos 6 caracteres';
+      default: return null;
+    }
+  }
+
   // Override validator to handle validating a given input value.
   @override
   PasswordError? validator(String value) {
